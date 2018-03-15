@@ -4,10 +4,13 @@
   "private": true,
   "dependencies": {
     "admin-on-rest": "^1.4.0",
+    "aor-language-chinese": "^1.0.5",
     "prettier": "^1.11.1",
     "pretty-quick": "^1.4.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1"
   },
   "scripts": {

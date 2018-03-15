@@ -1,21 +1,41 @@
 // in src/posts.js
 import React from 'react';
-import { List, Edit, Create, Datagrid, TextField, ReferenceField,
-    EditButton, DisabledInput, LongTextInput, ReferenceInput, 
-    required, SelectInput, SimpleForm, TextInput } from 'admin-on-rest';
+import { List, Filter, Edit, Create, Datagrid, TextField, ReferenceField,
+    EditButton, DisabledInput, LongTextInput, ReferenceInput, required,
+    SelectInput, SimpleForm, TextInput, Responsive, SimpleList } from 'admin-on-rest';
 
 export const PostList = (props) => (
-    <List {...props}>
-        <Datagrid>
-            <TextField source="id" />
-            <ReferenceField label="User" source="userId" reference="users">
-                <TextField source="name" />
-            </ReferenceField>
-            <TextField source="title" />
-            <TextField source="body" />
-            <EditButton />
-        </Datagrid>
+    <List {...props} filters={<PostFilter />}>
+        <Responsive
+            small={
+                <SimpleList
+                    primaryText={record => record.title}
+                    secondaryText={record => `${record.views} views`}
+                    tertiaryText={record => new Date(record.published_at).toLocaleDateString()}
+                />
+            }
+            medium={
+                <Datagrid>
+                    <TextField source="id" />
+                    <ReferenceField label="User" source="userId" reference="users">
+                        <TextField source="name" />
+                    </ReferenceField>
+                    <TextField source="title" />
+                    <TextField source="body" />
+                    <EditButton />
+                </Datagrid>   
+            }
+        />
     </List>
+);
+
+const PostFilter = (props) => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn/>
+        <ReferenceInput label="User" source="userId" reference="users">
+            <SelectInput optionText="name" />
+        </ReferenceInput>
+    </Filter>
 );
 
 const PostTitle = ({ record }) => {

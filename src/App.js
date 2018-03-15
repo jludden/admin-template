@@ -1,15 +1,22 @@
-import React from "react";
-import { jsonServerRestClient, Admin, Resource, Delete } from "admin-on-rest";
+import React, {Component } from "react";
+import { BrowserRouter as Router, Link, Route} from 'react-router-dom'
+import { adminConsole } from './adminConsole'
 
-import { PostList, PostEdit, PostCreate } from "./posts";
-import { UserList } from "./users";
-
-const App = () => (
-  <Admin restClient={jsonServerRestClient(
-        "https://jsonplaceholder.typicode.com")}>
-    <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} remove={Delete} />
-    <Resource name="users" list={UserList} />
-  </Admin>
-);
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <Route path="/admin/" component={adminConsole}/>
+          <Route exact={true} path="/" render={()  => (
+            <div>
+              <h1> Welcome to the Hangzhou Dylan Tech demo </h1>
+              <Link to={'/admin/'}> Admin console </Link>
+            </div>)}/>
+        </div>
+     </Router>
+    )
+  }
+};
 
 export default App;
