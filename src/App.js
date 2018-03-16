@@ -8,7 +8,7 @@ class App extends Component {
       <Router>
         <div>
           <Route path="/admin/" component={adminConsole}/>
-          <Route exact={true} path="/" render={()  => (
+          <Route exact={true} path="/" render={() => (
             <div>
               <h1> Welcome to the Hangzhou Dylan Tech demo </h1>
               <Link to={'/admin/'}> Admin console </Link>
