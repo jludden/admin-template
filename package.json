@@ -5,6 +5,7 @@
   "dependencies": {
     "admin-on-rest": "^1.4.0",
     "aor-language-chinese": "^1.0.5",
+    "material-ui": "^0.20.0",
     "prettier": "^1.11.1",
     "pretty-quick": "^1.4.1",
     "react": "^16.2.0",

@@ -1,6 +1,7 @@
 import React from "react";
 import { Admin, Resource, Delete, englishMessages, jsonServerRestClient } from "admin-on-rest";
 import chineseMessages from 'aor-language-chinese';
+import * as customMessages from './i18n';
 import Dashboard from './Dashboard';
 import authClient from './authClient';
 import { PostList, PostEdit, PostCreate } from "./posts";
@@ -10,7 +11,7 @@ import UserIcon from 'material-ui/svg-icons/social/group';
 
 
 const messages = {
-  cn: chineseMessages,
+  cn: { ...chineseMessages, ...customMessages.cn },
   en: englishMessages,
 };
 
